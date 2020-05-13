@@ -30,6 +30,9 @@ public class Registration extends AppCompatActivity {
     public TextView contactUsReg, terms;
     private CheckBox acceptTnC;
 
+
+    private Button temp;// temporary code
+
     DatabaseReference databaseuser;
 
     @Override
@@ -104,6 +107,7 @@ public class Registration extends AppCompatActivity {
                 }
         );
 
+        tempOnclickListener();//temporary code
 
     }
 
@@ -128,7 +132,19 @@ public class Registration extends AppCompatActivity {
 
         return ans;
     }
-
-
+    // temporary code
+    private void tempOnclickListener(){
+        temp=(Button)findViewById(R.id.temporary_button);
+        temp.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent interest_intent= new Intent(Registration.this, Interest_Part.class);
+                        startActivity(interest_intent);
+                    }
+                }
+        );
+    }
+    //temporary code ends
 
 }

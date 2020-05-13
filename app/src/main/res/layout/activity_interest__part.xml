@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InterestPartActivity">
+    tools:context=".Interest_Part">
 
     <TextView
         android:id="@+id/startText"
@@ -32,7 +32,7 @@
             android:orientation="vertical">
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig1"
                 android:tag="1"
                 android:contentDescription="Art"
@@ -45,7 +45,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/ig2"/>
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig3"
                 android:tag="3"
                 android:layout_marginLeft="10dp"
@@ -54,11 +54,14 @@
                 android:layout_height="150dp"
                 android:src="@drawable/careerandbusinessimage"
                 android:foregroundGravity="center"
+                android:elevation="5dp"
+                android:translationZ="5dp"
+                android:stateListAnimator="@null"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ig1"
                 app:layout_constraintRight_toLeftOf="@id/ig4" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig5"
                 android:tag="5"
                 android:layout_marginLeft="10dp"
@@ -71,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig3"
                 app:layout_constraintRight_toLeftOf="@id/ig6" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig7"
                 android:tag="7"
                 android:layout_marginLeft="10dp"
@@ -84,7 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig5"
                 app:layout_constraintRight_toLeftOf="@id/ig8" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig9"
                 android:tag="9"
                 android:layout_marginLeft="10dp"
@@ -97,7 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig7"
                 app:layout_constraintRight_toLeftOf="@id/ig10" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig11"
                 android:tag="11"
                 android:layout_marginLeft="10dp"
@@ -110,7 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig9"
                 app:layout_constraintRight_toLeftOf="@id/ig12" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig13"
                 android:tag="13"
                 android:layout_marginLeft="10dp"
@@ -123,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig11"
                 app:layout_constraintRight_toLeftOf="@id/ig14" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig15"
                 android:tag="15"
                 android:layout_marginLeft="10dp"
@@ -136,7 +139,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig13"
                 app:layout_constraintRight_toLeftOf="@id/ig16" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig17"
                 android:tag="17"
                 android:layout_marginLeft="10dp"
@@ -149,7 +152,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig15"
                 app:layout_constraintRight_toLeftOf="@id/ig18" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig19"
                 android:tag="19"
                 android:layout_marginLeft="10dp"
@@ -162,7 +165,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig17"
                 app:layout_constraintRight_toLeftOf="@id/ig20" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig21"
                 android:tag="21"
                 android:layout_marginLeft="10dp"
@@ -176,7 +179,7 @@
                 app:layout_constraintRight_toLeftOf="@id/tickRef" />
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig2"
                 android:tag="2"
                 app:layout_constraintRight_toRightOf="parent"
@@ -191,7 +194,7 @@
 
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig4"
                 android:tag="4"
                 android:layout_marginRight="10dp"
@@ -204,7 +207,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig2"
                 app:layout_constraintLeft_toRightOf="@id/ig3"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig6"
                 android:tag="6"
                 android:layout_marginRight="10dp"
@@ -217,7 +220,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig4"
                 app:layout_constraintLeft_toRightOf="@id/ig5"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig8"
                 android:tag="8"
                 android:layout_marginRight="10dp"
@@ -230,7 +233,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig6"
                 app:layout_constraintLeft_toRightOf="@id/ig7"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig10"
                 android:tag="10"
                 android:layout_marginRight="10dp"
@@ -243,7 +246,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig8"
                 app:layout_constraintLeft_toRightOf="@id/ig9"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig12"
                 android:tag="12"
                 android:layout_marginRight="10dp"
@@ -256,7 +259,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig10"
                 app:layout_constraintLeft_toRightOf="@id/ig11"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig14"
                 android:tag="14"
                 android:layout_marginRight="10dp"
@@ -269,7 +272,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig12"
                 app:layout_constraintLeft_toRightOf="@id/ig13"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig16"
                 android:tag="16"
                 android:layout_marginRight="10dp"
@@ -282,7 +285,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig14"
                 app:layout_constraintLeft_toRightOf="@id/ig15"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig18"
                 android:tag="18"
                 android:layout_marginRight="10dp"
@@ -295,7 +298,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig16"
                 app:layout_constraintLeft_toRightOf="@id/ig17"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ig20"
                 android:tag="20"
                 android:layout_marginRight="10dp"
@@ -308,7 +311,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ig18"
                 app:layout_constraintLeft_toRightOf="@id/ig19"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/tickRef"
                 android:tag="22"
                 android:layout_marginTop="10dp"
