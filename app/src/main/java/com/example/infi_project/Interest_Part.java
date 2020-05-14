@@ -77,8 +77,10 @@ public class Interest_Part extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(Interest_Part.this, AppMainPage.class));
+                        Intent appMainPage_intent= new Intent(Interest_Part.this, AppMainPage.class);
 
+                        startActivity(appMainPage_intent);
+                        finish();
                         //more code to be added
                         //to update the user database
                     }
