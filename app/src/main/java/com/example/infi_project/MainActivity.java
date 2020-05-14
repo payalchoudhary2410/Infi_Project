@@ -23,8 +23,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView contactUs;
     private String phoneNumber;
-    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    DatabaseReference mdatabase;
+   private  PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+   private  DatabaseReference mdatabase;
 
 
 
@@ -191,8 +194,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(inten);
     }
 
-    private void SendVerificationCode()
-    {
+    private void SendVerificationCode() {
         phoneNumber = Phone_No.getText().toString();
         if (phoneNumber.length() == 0) {
             Phone_No.setError("Field cannot be empty");
@@ -203,19 +205,39 @@ public class MainActivity extends AppCompatActivity {
             Phone_No.setError("Invalid number");
 
             Phone_No.requestFocus();
-        }
-        else {
-            phoneNumber="+91"+phoneNumber;
-            Toast.makeText(MainActivity.this,phoneNumber, Toast.LENGTH_SHORT).show();
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    phoneNumber,        // Phone number to verify
-                    60,                 // Timeout duration
-                    TimeUnit.SECONDS,   // Unit of timeout
-                    MainActivity.this,               // Activity (for callback binding)
-                    mCallbacks);        // OnVerificationStateChangedCallback
-        }
+        } else {
+            phoneNumber = "+91" + phoneNumber;
+            Toast.makeText(MainActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
+
+            mdatabase.child("PhoneNumber").child(phoneNumber).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    if (!(dataSnapshot.exists())) {
 
 
+                        Toast.makeText(MainActivity.this, "Account With This Phone Number Does Not Exist", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Toast.makeText(MainActivity.this,phoneNumber, Toast.LENGTH_SHORT).show();
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                phoneNumber,        // Phone number to verify
+                                60,                 // Timeout duration
+                                TimeUnit.SECONDS,   // Unit of timeout
+                                MainActivity.this,               // Activity (for callback binding)
+                                mCallbacks);        // OnVerificationStateChangedCallback
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
     }
 
     private void Validate(String otpp) {
