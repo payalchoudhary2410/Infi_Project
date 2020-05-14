@@ -2,6 +2,7 @@ package com.example.infi_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class Interest_Part extends AppCompatActivity {
         subBtn=(Button)findViewById(R.id.button_submitInterest);
         subBtn.setEnabled(false);
         igOnclick();
+        subBtnOnclickListener();
 
 
     }
@@ -69,4 +71,19 @@ public class Interest_Part extends AppCompatActivity {
         }
 
     }
+
+    public void subBtnOnclickListener(){
+        subBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(Interest_Part.this, AppMainPage.class));
+
+                        //more code to be added
+                        //to update the user database
+                    }
+                }
+        );
+    }
+
 }
