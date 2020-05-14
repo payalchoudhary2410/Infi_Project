@@ -62,4 +62,6 @@ public class ChatTab extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat_tab, container, false);
     }
+
+
 }

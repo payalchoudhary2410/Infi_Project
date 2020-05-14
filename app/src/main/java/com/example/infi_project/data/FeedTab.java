@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+//extra added
+//import android.net.Uri;
+//import android.support.v4.app.Fragment;
+// extra added ends
 
 import com.example.infi_project.R;
 
@@ -24,6 +28,9 @@ public class FeedTab extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //private OnFragmentInteractionListener mListener;//added extra
+
 
     public FeedTab() {
         // Required empty public constructor
@@ -62,4 +69,6 @@ public class FeedTab extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed_tab, container, false);
     }
+
+
 }
