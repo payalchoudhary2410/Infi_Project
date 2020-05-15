@@ -141,6 +141,7 @@ public class Registration extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent interest_intent= new Intent(Registration.this, Interest_Part.class);
                         startActivity(interest_intent);
+                        finish();
                     }
                 }
         );
