@@ -44,6 +44,7 @@ public class Registration extends AppCompatActivity {
     String email;
     String rol;
     String mobilee;
+    private CheckBox tnC;
 
 
 
@@ -56,6 +57,24 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         setupID();
+
+        if (acceptTnC.isChecked()==false) {
+            reg.setEnabled(false);
+        }
+        acceptTnC.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(acceptTnC.isChecked()){
+                            reg.setEnabled(true);
+
+                        }
+                        else{
+                            reg.setEnabled(false);
+                        }
+                    }
+                }
+        );
 
 
 
@@ -94,7 +113,7 @@ public class Registration extends AppCompatActivity {
             }
         });
 
-
+        mdate=bdate.getText().toString();
 
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +212,7 @@ public class Registration extends AppCompatActivity {
         String rol=roll.getText().toString();
         String mobilee=mobile.getText().toString();
 
-        if (name.isEmpty() || password.isEmpty() || email.isEmpty()|| rol.isEmpty()||mobilee.isEmpty()||mdate.isEmpty()) {
+        if (name.isEmpty() || password.isEmpty() || email.isEmpty()|| rol.isEmpty()||mobilee.isEmpty()) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
 
         } else {
