@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Registration extends AppCompatActivity {
@@ -44,7 +46,6 @@ public class Registration extends AppCompatActivity {
     String email;
     String rol;
     String mobilee;
-    private CheckBox tnC;
 
 
 
@@ -58,31 +59,13 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         setupID();
 
-        if (acceptTnC.isChecked()==false) {
-            reg.setEnabled(false);
-        }
-        acceptTnC.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(acceptTnC.isChecked()){
-                            reg.setEnabled(true);
-
-                        }
-                        else{
-                            reg.setEnabled(false);
-                        }
-                    }
-                }
-        );
 
 
 
+       // firebaseAuth=FirebaseAuth.getInstance();
+        databaseuser= FirebaseDatabase.getInstance().getReference();
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        databaseuser= FirebaseDatabase.getInstance().getReference("Users");
-
-        bdate.setOnClickListener(new View.OnClickListener() {
+       /* bdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -111,45 +94,52 @@ public class Registration extends AppCompatActivity {
 
 
             }
-        });
+        }); */
 
-        mdate=bdate.getText().toString();
+
 
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate();
                 if(validate()){
+                    System.out.println("VALIDATE");
+                }
 
-                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
 
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
-                                userid = user.getUid();
-                                HashMap<String, Object> profileMap = new HashMap<>();
-                                profileMap.put("uid", userid);
+                    DatabaseReference userRef=databaseuser.child("Usersss");
+
+
+
+
+                              Map<String, Object> profileMap = new HashMap<>();
+
                                 profileMap.put("name", name);
                                 profileMap.put("email", email);
-                                profileMap.put("iitb roll no", roll);
+                                profileMap.put("iitb roll no", rol);
                                 profileMap.put("phone no ", mobilee);
-                                profileMap.put("date of birth", mdate);
+                                //profileMap.put("date of birth", mdate);
 
-                                databaseuser.child("Users").child(userid).updateChildren(profileMap)
+
+
+                                userRef.setValue(profileMap)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
 
+
                                                 if (task.isSuccessful()) {
+                                                    Toast.makeText(Registration.this, "This is a test Toast", Toast.LENGTH_SHORT).show();
+                                                    System.out.println("Test 1");
+
                                                     databaseuser.child("PhoneNumber").setValue(mobilee);
 
                                                     Toast.makeText(Registration.this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
-                                                    startActivity(new Intent(Registration.this, MainActivity.class));
+                                                    startActivity(new Intent(Registration.this, Interest_Part.class));
                                                     finish();
 
                                                 } else {
+
                                                     String message = task.getException().toString();
                                                     Toast.makeText(Registration.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                                                 }
@@ -157,17 +147,13 @@ public class Registration extends AppCompatActivity {
 
                                             }
                                         });
-                            } else {
-                                Toast.makeText(Registration.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-
-
                             }
-                        }
+
                     });
 
-                }
-            }
-        });
+
+
+
         InfoLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,19 +192,28 @@ public class Registration extends AppCompatActivity {
 
     public Boolean validate() {
         Boolean ans = false;
+        String anss="false";
         String name = userName.getText().toString();
         String password = userPassword.getText().toString();
         String email = userEmail.getText().toString();
         String rol=roll.getText().toString();
         String mobilee=mobile.getText().toString();
+        mdate=bdate.getText().toString();
+
+
 
         if (name.isEmpty() || password.isEmpty() || email.isEmpty()|| rol.isEmpty()||mobilee.isEmpty()) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
 
         } else {
+
+
             mobilee="+91"+mobilee;
             ans = true;
+
         }
+
+
 
         return ans;
     }
@@ -231,7 +226,6 @@ public class Registration extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent interest_intent= new Intent(Registration.this, Interest_Part.class);
                         startActivity(interest_intent);
-                        finish();
                     }
                 }
         );
