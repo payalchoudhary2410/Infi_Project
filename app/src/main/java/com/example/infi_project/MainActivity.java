@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Signupp(){
-        Intent inten = new Intent(this, Registration.class);
+        Intent inten = new Intent(this, RegActivityTwo.class);
         startActivity(inten);
     }
 
